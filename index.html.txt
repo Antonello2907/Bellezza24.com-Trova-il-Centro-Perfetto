@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bellezza24.com - Trova il Centro Perfetto</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      background: url('sfondo.png.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fallback se l'immagine non carica */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff007f, #8000ff);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      flex-grow: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .header h2 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: cyan;
+      font-weight: normal;
+    }
+
+    .content {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid cyan;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 500px;
+      height: 300px;
+      margin: 20px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .section {
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .section h3 {
+      font-size: 1.8rem;
+      color: cyan;
+      margin-bottom: 15px;
+      text-align: center;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .section p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .benefit-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid cyan;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .service-item {
+      background: rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .steps {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+      padding: 15px;
+      margin: 10px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: cyan;
+      color: black;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: bold;
+    }
+
+    .book-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff007f, #8000ff);
+      color: white;
+      padding: 18px 50px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .book-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(45deg, #8000ff, #ff007f);
+    }
+
+    .centers-link {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      color: cyan;
+      padding: 12px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 15px 0;
+      border: 1px solid cyan;
+      transition: all 0.3s ease;
+    }
+
+    .centers-link:hover {
+      background: rgba(0, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 15px;
+      background: rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+      width: 100%;
+    }
+
+    /* Mobile First Approach */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 15px;
+      }
+      
+      .content {
+        padding: 20px;
+      }
+      
+      .header {
+        margin-bottom: 30px;
+      }
+      
+      .main-image {
+        height: 250px;
+      }
+      
+      .steps {
+        flex-direction: column;
+      }
+      
+      .step {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px 10px;
+      }
+      
+      .content {
+        padding: 15px;
+      }
+      
+      .main-image {
+        height: 200px;
+      }
+      
+      .logo {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .benefits-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Prevent horizontal scroll */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>BELLEZZA24.COM</h1>
+      <h2>Trova il Centro Perfetto in 48 Ore</h2>
+    </div>
+
+    <div class="content">
+      <div class="logo">
+        <img src="logo.jpg.png" alt="Logo Bellezza24.com" onerror="this.style.display='none'">
+      </div>
+
+      <div class="main-image">
+        <img src="immagine.jpg.png" alt="Trova il centro perfetto per te" onerror="this.style.display='none'">
+      </div>
+
+      <div class="section">
+        <h3>COME FUNZIONA?</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <p>Ci dici di cosa hai bisogno</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <p>Ci indichi dove sei</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <p>Noi troviamo per te</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <p>Prenoti con vantaggi</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>PERCHÉ SCEGLIERE NOI?</h3>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <strong>✅ RISPARMI TEMPO</strong>
+            <p>Non perdere ore su Google</p>
+          </div>
+          <div class="benefit-item">
+            <strong>💰 SCONTI ESCLUSIVI</strong>
+            <p>Fino al 25% con promo Bea25</p>
+          </div>
+          <div class="benefit-item">
+            <strong>⭐ CENTRI VERIFICATI</strong>
+            <p>Solo strutture professionali</p>
+          </div>
+          <div class="benefit-item">
+            <strong>📍 VICINO A CASA</strong>
+            <p>Nella tua zona</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>I NOSTRI SERVIZI</h3>
+        <div class="services-grid">
+          <div class="service-item">
+            <strong>🏖️ SPA</strong>
+            <p>Trattamenti rilassanti e rigeneranti</p>
+          </div>
+          <div class="service-item">
+            <strong>💄 ESTETICA</strong>
+            <p>Bellezza e cura della persona</p>
+          </div>
+          <div class="service-item">
+            <strong>🦷 ODONTOIATRIA</strong>
+            <p>Salute e sorriso perfetto</p>
+          </div>
+          <div class="service-item">
+            <strong>🌿 BENESSERE</strong>
+            <p>Equilibrio corpo e mente</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>PRONTO A INIZIARE?</h3>
+        <p><em>"Lascia che troviamo noi il centro perfetto per te. Professionisti verificati, vicini a casa tua, con condizioni vantaggiose riservate solo ai nostri clienti."</em></p>
+        
+        <a href="#" class="book-button">PRENOTA IL TUO TRATTAMENTO - È GRATIS!</a>
+        
+        <br>
+        
+        <a href="centri-partner.html" class="centers-link">Sei un centro? Diventa nostro partner</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Powered by Antonino1.ag</p>
+    <p>Privacy Policy | Cookie | Termini d'Uso</p>
+  </footer>
+
+  <script>
+    // Previene lo zoom su doppio tap su mobile
+    document.addEventListener('touchstart', function(event) {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+      }
+    }, { passive: false });
+
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    // Gestione errori immagini
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        img.onerror = function() {
+          this.style.display = 'none';
+          // Mostra un placeholder se l'immagine non carica
+          if(this.parentElement.classList.contains('logo')) {
+            this.parentElement.innerHTML = '<div style="width:100%;height:100%;background:rgba(0,255,255,0.2);display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem;">BELLEZZA24</div>';
+          } else if(this.parentElement.classList.contains('main-image')) {
+            this.parentElement.innerHTML = '<div style="width:100%;height:100%;background:rgba(0,255,255,0.1);display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;flex-direction:column;"><span>BELLEZZA24.COM</span><span style="font-size:0.8rem;margin-top:10px;">Trova il centro perfetto per te</span></div>';
+          }
+        };
+      });
+    });
+  </script>
+
+</body>
+</html>
